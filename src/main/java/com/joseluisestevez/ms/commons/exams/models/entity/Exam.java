@@ -67,4 +67,17 @@ public class Exam {
         question.setExam(null);
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Exam)) {
+            return false;
+        }
+        Exam a = (Exam) o;
+
+        return this.id != null && this.id.equals(a.getId());
+    }
+
 }
