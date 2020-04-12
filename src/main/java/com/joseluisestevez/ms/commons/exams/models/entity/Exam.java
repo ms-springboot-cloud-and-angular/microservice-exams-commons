@@ -11,6 +11,7 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.Table;
@@ -46,6 +47,9 @@ public class Exam {
     @JsonIgnoreProperties(value = { "exam" }, allowSetters = true)
     @OneToMany(mappedBy = "exam", fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Question> questions = new ArrayList<>();
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Subject subject;
 
     @PrePersist
     public void prePersist() {
