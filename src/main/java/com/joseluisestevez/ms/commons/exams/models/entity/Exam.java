@@ -17,6 +17,7 @@ import javax.persistence.PrePersist;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -56,6 +57,9 @@ public class Exam {
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
     private Subject subject;
+
+    @Transient
+    private boolean answered;
 
     @PrePersist
     public void prePersist() {
