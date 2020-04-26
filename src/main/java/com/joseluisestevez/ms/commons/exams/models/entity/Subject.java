@@ -35,12 +35,12 @@ public class Subject {
     private String name;
 
     // limit cascading relationships with @JsonIgnoreProperties
-    @JsonIgnoreProperties(value = { "children" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "children", "handler", "hibernateLazyInitializer" }, allowSetters = true)
     @ManyToOne(fetch = FetchType.LAZY)
     private Subject parent;
 
     // limit cascading relationships with @JsonIgnoreProperties
-    @JsonIgnoreProperties(value = { "parent" }, allowSetters = true)
+    @JsonIgnoreProperties(value = { "parent", "handler", "hibernateLazyInitializer" }, allowSetters = true)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "parent", cascade = CascadeType.ALL)
     private List<Subject> children = new ArrayList<>();
 }
